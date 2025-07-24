@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond -->
+  <rect width="200" height="80" fill="#f8fafc" rx="8"/>
+  
+  <!-- Cercle principal -->
+  <circle cx="40" cy="40" r="25" fill="url(#grad2)"/>
+  <circle cx="40" cy="40" r="15" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="40" cy="40" r="8" fill="#ffffff"/>
+  
+  <!-- Texte -->
+  <text x="75" y="35" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1a365d">EXPERT</text>
+  <text x="75" y="50" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f59e0b">BÂTIMENT</text>
+  <text x="75" y="65" font-family="Arial, sans-serif" font-size="10" fill="#64748b">Certifié</text>
+</svg>

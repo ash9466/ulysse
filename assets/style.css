@@ -22,7 +22,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Caveat', 'Comic Sans MS', cursive, Arial, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -31,147 +31,41 @@ body {
   font-weight: 400;
 }
 
-/* HEADER & NAV */
-header {
-  background: rgba(255,255,255,0.95);
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
-  backdrop-filter: blur(12px);
+/* BUDGET SLIDER */
+.slider {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
 }
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  min-height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-nav .logo {
-  font-size: 1.875rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  text-decoration: none;
-  font-family: 'Caveat', 'Comic Sans MS', cursive, Arial, sans-serif;
-  color: var(--main-color);
-  background: none;
-  transition: all var(--transition);
-  position: relative;
-  z-index: 2;
-}
-nav .logo::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-  transition: width var(--transition);
-}
-nav .logo:hover::after {
-  width: 100%;
-}
-nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-nav ul li {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-nav ul li a {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 1rem;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--text-color);
-  letter-spacing: 0.025em;
-  position: relative;
-  background: none;
-  transition: all var(--transition);
-  z-index: 1;
-  overflow: visible;
-  text-decoration: none !important;
-}
-nav ul li a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--gradient-accent);
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity var(--transition);
-  z-index: -1;
-}
-nav ul li a:hover,
-nav ul li a.active {
-  color: var(--main-color) !important;
-  background: none !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
-  transform: translateY(-1px);
-}
-nav ul li a:hover::before,
-nav ul li a.active::before {
+
+.slider:hover {
   opacity: 1;
 }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f59e0b;
   cursor: pointer;
-  width: 32px;
-  height: 32px;
-  justify-content: center;
-  align-items: center;
-  z-index: 200;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
-.menu-toggle span {
-  display: block;
-  height: 4px;
-  width: 28px;
-  background: var(--main-color);
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f59e0b;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
-@media (max-width: 900px) {
-  nav ul {
-    position: fixed;
-    top: 0; right: -100vw;
-    height: 100vh;
-    width: 70vw;
-    background: var(--white);
-    flex-direction: column;
-    gap: 2.5rem;
-    justify-content: center;
-    align-items: center;
-    box-shadow: var(--shadow);
-    transition: right var(--transition);
-  }
-  nav ul.open {
-    right: 0;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-}
+
+/* HEADER & NAV - Maintenant géré par Tailwind */
+/* Les styles de navbar sont maintenant dans les classes Tailwind du HTML */
 
 /* HERO */
 .hero {
@@ -202,10 +96,10 @@ nav ul li a.active::before {
 }
 .hero h1 {
   font-size: 3rem !important;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 1.5rem !important;
-  letter-spacing: -0.025em;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -0.5px;
+  font-family: 'Poppins', sans-serif;
   animation: fadeInUp 1s 0.1s both;
   line-height: 1.2;
 }
@@ -300,8 +194,9 @@ nav ul li a.active::before {
   margin-bottom: 1rem;
   color: var(--main-color);
   font-size: 2.5rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-family: 'Poppins', sans-serif;
 }
 .prestations-apercu .divider { margin-bottom: 3rem; }
 .prestations-list {
@@ -350,9 +245,10 @@ nav ul li a.active::before {
   color: var(--main-color);
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.25px;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 .prestation p {
   color: var(--text-light);
@@ -418,8 +314,9 @@ nav ul li a.active::before {
   color: var(--main-color);
   margin-bottom: 1.5rem;
   font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* PARTENAIRES */
@@ -987,21 +884,7 @@ nav ul li a.active::after {
 }
 .menu-toggle { display: none; }
 
-/* --- SUIVI SOURIS GLOBAL --- */
-.cursor-trail {
-  position: fixed;
-  top: 0; left: 0;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, #f5b041cc 0%, #fff0 80%);
-  box-shadow: 0 0 18px 8px #f5b04144;
-  z-index: 99999;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  mix-blend-mode: multiply;
-  filter: blur(1.5px);
-}
+/* --- SUIVI SOURIS GLOBAL --- SUPPRIMÉ */
 
 /* --- BOUTON DEMANDER UN DEVIS MODERNE --- */
 .cta, .btn-devis {
