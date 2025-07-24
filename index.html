@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entreprise familiale de rénovation : peinture, plomberie, électricité, et plus. Demandez votre devis gratuit !">
+  <title>Ulysse Rénovation - Accueil</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preload" href="assets/style.css" as="style">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Ulysse Chauffage Sanitaire",
+      "description": "Plombier à Russange, France. Spécialiste chauffage et sanitaire. 4,334 avis.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "34 Rue du Luxembourg",
+        "addressLocality": "Russange",
+        "postalCode": "57390",
+        "addressCountry": "FR"
+      },
+      "telephone": "+33 6 11 04 77 82",
+      "openingHours": [
+        "Mo 08:00-18:00",
+        "Tu 08:00-18:00",
+        "We 08:00-18:00",
+        "Th 08:00-18:00",
+        "Fr 08:00-18:00"
+      ],
+      "url": ""
+    }
+  </script>
+  <script defer src="assets/main.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Ulysse Chauffage Sanitaire</a>
+      <ul>
+        <li><a href="src/prestations.html">Prestations</a></li>
+        <li><a href="src/galerie.html">Galerie</a></li>
+        <li><a href="src/qui-sommes-nous.html">Qui sommes-nous ?</a></li>
+        <li><a href="#devis">Devis</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero appear">
+      <div class="hero-inner">
+        <h1 class="hero-title">Votre artisan de confiance<br><span style="color:#e6b800;">pour tous vos travaux</span></h1>
+        <p class="hero-desc">Ulysse Chauffage Sanitaire vous accompagne pour tous vos besoins en rénovation, plomberie, chauffage et électricité à Russange et alentours. Qualité, proximité, transparence.</p>
+        <div class="hero-buttons" style="display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#devis" class="btn"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+          <a href="#prestations" class="btn">Découvrir nos prestations</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><i class="fa fa-clock"></i> Intervention rapide</div>
+        </div>
+      </div>
+    </section>
+    <section class="prestations-apercu appear">
+      <h2>Nos prestations</h2>
+      <div class="divider"></div>
+      <div class="prestations-list">
+        <div class="prestation">
+          <h3>Peinture</h3>
+          <p>Rafraîchissement, décoration, finitions haut de gamme.</p>
+          <button class="btn" data-modal="peinture">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h3>Plomberie</h3>
+          <p>Installation, dépannage, rénovation de salles de bain.</p>
+          <button class="btn" data-modal="plomberie">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h3>Électricité</h3>
+          <p>Mise aux normes, installation, dépannage rapide.</p>
+          <button class="btn" data-modal="electricite">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h3>Carrelage</h3>
+          <p>Pose de carrelage, faïence, mosaïque sur-mesure.</p>
+          <button class="btn" data-modal="carrelage">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h3>Menuiserie</h3>
+          <p>Agencement, création de meubles, portes et fenêtres.</p>
+          <button class="btn" data-modal="menuiserie">En savoir plus</button>
+        </div>
+      </div>
+    </section>
+    <!-- POPUPS MODALES PRESTATIONS -->
+    <div id="modal-peinture" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Peinture</h2>
+        <p>Confiez vos travaux de peinture à une équipe expérimentée. Préparation des supports, application de peintures écologiques, décoration murale et finitions haut de gamme. Résultat durable et esthétique, adapté à vos envies et à votre budget.</p>
+      </div>
+    </div>
+    <div id="modal-plomberie" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Plomberie</h2>
+        <p>Création ou rénovation de salle de bain, remplacement de robinetterie, recherche de fuites, installation de chauffe-eau. Travail soigné, rapide et conforme aux normes.</p>
+      </div>
+    </div>
+    <div id="modal-electricite" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Électricité</h2>
+        <p>Mise aux normes, installation de tableaux électriques, dépannage rapide et rénovation complète. Sécurité, efficacité et conseils personnalisés pour tous vos projets électriques.</p>
+      </div>
+    </div>
+    <div id="modal-carrelage" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Carrelage</h2>
+        <p>Pose de carrelage, faïence, mosaïque sur-mesure pour toutes vos pièces : salle de bain, cuisine, terrasse. Finitions soignées, conseils sur le choix des matériaux et respect des délais.</p>
+      </div>
+    </div>
+    <div id="modal-menuiserie" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Menuiserie</h2>
+        <p>Création de meubles sur-mesure, agencement d'espaces, pose de portes et fenêtres. Accompagnement de la conception à la réalisation, pour un intérieur unique et fonctionnel.</p>
+      </div>
+    </div>
+    <section class="horaires appear">
+      <div class="horaires-inner">
+        <div class="horaires-header">
+          <span class="horaires-icone"><svg width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#183153" stroke-width="2"/><path d="M12 7v5l3 2" stroke="#e6b800" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <h2>Nos horaires</h2>
+        </div>
+        <div class="horaires-grille">
+          <div><span>Lundi</span><span>8h00 - 18h00</span></div>
+          <div><span>Mardi</span><span>8h00 - 18h00</span></div>
+          <div><span>Mercredi</span><span>8h00 - 18h00</span></div>
+          <div><span>Jeudi</span><span>8h00 - 18h00</span></div>
+          <div><span>Vendredi</span><span>8h00 - 18h00</span></div>
+          <div><span>Samedi</span><span>Fermé</span></div>
+          <div><span>Dimanche</span><span>Fermé</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="partenaires appear">
+      <h2>Nos partenaires</h2>
+      <div class="logos-partenaires">
+        <img src="images/partner1.png" alt="Partenaire 1">
+        <img src="images/partner2.png" alt="Partenaire 2">
+        <img src="images/partner3.png" alt="Partenaire 3">
+      </div>
+    </section>
+    <section class="devis-contact appear" id="devis">
+      <h2>Demandez votre devis gratuit</h2>
+      <form action="php/send_mail.php" method="POST" class="form-devis">
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" required>
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+        <label for="telephone">Téléphone *</label>
+        <input type="tel" id="telephone" name="telephone" required>
+        <label for="prestation">Type de prestation *</label>
+        <select id="prestation" name="prestation" required>
+          <option value="">Sélectionnez</option>
+          <option value="Peinture">Peinture</option>
+          <option value="Plomberie">Plomberie</option>
+          <option value="Électricité">Électricité</option>
+          <option value="Carrelage">Carrelage</option>
+          <option value="Menuiserie">Menuiserie</option>
+        </select>
+        <label for="description">Description du projet *</label>
+        <textarea id="description" name="description" required></textarea>
+        <label for="budget">Budget estimé (€)</label>
+        <input type="number" id="budget" name="budget" min="0" step="100">
+        <button type="submit" class="cta">Envoyer ma demande</button>
+      </form>
+    </section>
+    <section class="avis-section appear">
+      <h2><span class="google-logo"><svg width="1.5em" height="1.5em" viewBox="0 0 48 48"><g><path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303C33.978 32.833 29.373 36 24 36c-6.627 0-12-5.373-12-12s5.373-12 12-12c2.73 0 5.24.936 7.225 2.482l6.084-6.084C33.527 6.053 28.979 4 24 4 12.954 4 4 12.954 4 24s8.954 20 20 20c9.941 0 19.09-7.229 19.09-20 0-1.341-.138-2.651-.379-3.917z"/><path fill="#34A853" d="M6.306 14.691l6.571 4.819C14.655 16.108 19.008 13 24 13c2.73 0 5.24.936 7.225 2.482l6.084-6.084C33.527 6.053 28.979 4 24 4c-6.627 0-12 5.373-12 12 0 1.43.252 2.799.706 4.091z"/><path fill="#FBBC05" d="M24 44c5.311 0 10.18-1.819 13.963-4.938l-6.453-5.309C29.373 36 24 36 24 36c-5.373 0-9.978-3.167-11.303-8.083l-6.571 5.072C8.252 39.201 15.373 44 24 44z"/><path fill="#EA4335" d="M43.611 20.083H42V20H24v8h11.303c-1.13 3.833-5.735 8-11.303 8-3.02 0-5.73-1.01-7.823-2.682l-6.453 5.309C10.252 41.201 16.373 44 24 44c9.941 0 19.09-7.229 19.09-20 0-1.341-.138-2.651-.379-3.917z"/></g></svg></span> Avis clients</h2>
+      <div class="avis-carousel">
+        <div class="avis-card">
+          <div class="avis-nom">Danilo Filippi</div>
+          <div class="avis-date">il y a 4 mois</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Expérience au top ...Monsieur Stéphan c'est un vraiment professionnel son fils complet l'Expérience...Rien à dire appelez lui sans problème</div>
+          <div class="avis-date">Visité en mars</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Ludovic Clive DANTENY</div>
+          <div class="avis-date">il y a 11 mois</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">J'ai contacté cette entreprise suite à une recommandation, et dans le cadre d'un remplacement de chaudière. …Plus</div>
+          <div class="avis-date">Visité en août 2024</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Steponian Philippe</div>
+          <div class="avis-date">il y a 3 mois</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Très bon technicien, professionnel, je recommande 👍</div>
+          <div class="avis-date">Visité en avril</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Julien Boffy</div>
+          <div class="avis-date">il y a un an</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Contacté pour une chaudière fioul, visite le jour même. Rendez-vous rapide pour remplacement de la pièce concernée. Professionnel, à l'écoute, que du bon. Je vous conseille ses services.</div>
+          <div class="avis-positif">Positif : Réactivité, Professionnalisme</div>
+          <div class="avis-date">Visité en septembre 2023</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Aurélie Ferrari</div>
+          <div class="avis-date">il y a 3 ans</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Personne sympathique qui a trouvé un créneau rapidement pour venir résoudre mon problème de canalisation. Tarif plus que correct. Je referais appel à ce professionnel, je recommande.</div>
+          <div class="avis-positif">Positif : Réactivité, Ponctualité, Qualité, Professionnalisme, Prix</div>
+          <div class="avis-services">Services : Nettoyage de canalisations</div>
+          <div class="avis-date">Visité en février 2022</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Antoine Santi</div>
+          <div class="avis-date">il y a 4 ans</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Mes nouveaux water closet sont fort agréable. Je recommande vivement monsieur Stephane pour son professionnalisme , son rapport qualité/prix et sa gentillesse . Pour mes prochaines fois je le rappellerai.</div>
+          <div class="avis-positif">Positif : Réactivité, Ponctualité, Qualité, Professionnalisme, Prix</div>
+          <div class="avis-services">Services : Installation de toilettes, Réparation de robinetterie</div>
+          <div class="avis-date">Visité en mai 2021</div>
+        </div>
+        <div class="avis-card">
+          <div class="avis-nom">Louis Reschmann</div>
+          <div class="avis-date">il y a 4 ans</div>
+          <div class="avis-stars">★★★★★</div>
+          <div class="avis-txt">Très professionnel, je recommande fortement. Le travail est soigné, efficace et rapide. De plus, le personnel est très agréable et à l'écoute.</div>
+          <div class="avis-date">Visité en novembre 2020</div>
+        </div>
+      </div>
+      <div class="avis-carousel-nav">
+        <button class="avis-carousel-btn prev" aria-label="Avis précédent">&#8592;</button>
+        <button class="avis-carousel-btn next" aria-label="Avis suivant">&#8594;</button>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2024 Ulysse Chauffage Sanitaire. Tous droits réservés.</p>
+    </footer>
+  </main>
+</body>
+</html> 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nos prestations de rénovation : peinture, plomberie, électricité, carrelage, menuiserie. Ulysse Rénovation, votre expert à Paris.">
+  <title>Prestations - Ulysse Rénovation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script defer src="../assets/main.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="logo">Ulysse Chauffage Sanitaire</a>
+      <ul>
+        <li><a href="prestations.html">Prestations</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="qui-sommes-nous.html">Qui sommes-nous ?</a></li>
+        <li><a href="../index.html#devis">Devis</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="prestations-apercu appear">
+      <h1>Nos prestations de rénovation</h1>
+      <div class="divider"></div>
+      <div class="prestations-list">
+        <div class="prestation">
+          <h2>Peinture</h2>
+          <p>Rafraîchissement, décoration, finitions haut de gamme.</p>
+          <button class="btn" data-modal="peinture">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h2>Plomberie</h2>
+          <p>Installation, dépannage, rénovation de salles de bain.</p>
+          <button class="btn" data-modal="plomberie">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h2>Électricité</h2>
+          <p>Mise aux normes, installation, dépannage rapide.</p>
+          <button class="btn" data-modal="electricite">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h2>Carrelage</h2>
+          <p>Pose de carrelage, faïence, mosaïque sur-mesure.</p>
+          <button class="btn" data-modal="carrelage">En savoir plus</button>
+        </div>
+        <div class="prestation">
+          <h2>Menuiserie</h2>
+          <p>Agencement, création de meubles, portes et fenêtres.</p>
+          <button class="btn" data-modal="menuiserie">En savoir plus</button>
+        </div>
+      </div>
+    </section>
+    <!-- POPUPS MODALES PRESTATIONS -->
+    <div id="modal-peinture" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Peinture</h2>
+        <p>Confiez vos travaux de peinture à une équipe expérimentée. Préparation des supports, application de peintures écologiques, décoration murale et finitions haut de gamme. Résultat durable et esthétique, adapté à vos envies et à votre budget.</p>
+        <a href="../index.html#devis" class="btn-devis"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+      </div>
+    </div>
+    <div id="modal-plomberie" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Plomberie</h2>
+        <p>Création ou rénovation de salle de bain, remplacement de robinetterie, recherche de fuites, installation de chauffe-eau. Travail soigné, rapide et conforme aux normes.</p>
+        <a href="../index.html#devis" class="btn-devis"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+      </div>
+    </div>
+    <div id="modal-electricite" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Électricité</h2>
+        <p>Mise aux normes, installation de tableaux électriques, dépannage rapide et rénovation complète. Sécurité, efficacité et conseils personnalisés pour tous vos projets électriques.</p>
+        <a href="../index.html#devis" class="btn-devis"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+      </div>
+    </div>
+    <div id="modal-carrelage" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Carrelage</h2>
+        <p>Pose de carrelage, faïence, mosaïque sur-mesure pour toutes vos pièces : salle de bain, cuisine, terrasse. Finitions soignées, conseils sur le choix des matériaux et respect des délais.</p>
+        <a href="../index.html#devis" class="btn-devis"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+      </div>
+    </div>
+    <div id="modal-menuiserie" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <button class="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Menuiserie</h2>
+        <p>Création de meubles sur-mesure, agencement d'espaces, pose de portes et fenêtres. Accompagnement de la conception à la réalisation, pour un intérieur unique et fonctionnel.</p>
+        <a href="../index.html#devis" class="btn-devis"><svg viewBox="0 0 24 24"><path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.01L12 13l8-8.99V4H4zm16 2.41l-7.29 7.3a1 1 0 0 1-1.42 0L4 6.41V20h16V6.41z"></path></svg>Demander un devis</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Ulysse Chauffage Sanitaire. Tous droits réservés.</p>
+  </footer>
+</body>
+</html> 
