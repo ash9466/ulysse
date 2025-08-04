@@ -645,38 +645,7 @@ a:hover, .btn:hover, .cta:hover, button:hover {
 }
 
 /* --- NAVBAR FIX --- */
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.5rem 2rem 0.5rem 2rem;
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-nav ul {
-  display: flex;
-  gap: 2.2rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-}
-nav ul li {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-nav ul li a {
-  display: flex;
-  align-items: center;
-  height: 48px;
-  padding: 0 0.3rem;
-  border-radius: 8px;
-}
-nav ul li a:focus {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-}
+/* Styles supprimés pour éviter les conflits */
 
 /* --- BOUTONS ANIMÉS --- */
 .btn, .cta, button {
@@ -787,102 +756,7 @@ nav ul li a:focus {
 } 
 
 /* --- NAVBAR SIMPLIFIÉE & MODERNE --- */
-header {
-  background: rgba(255,255,255,0.95);
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
-  backdrop-filter: blur(12px);
-}
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  min-height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-nav .logo {
-  font-size: 1.875rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  text-decoration: none;
-  font-family: 'Caveat', 'Comic Sans MS', cursive, Arial, sans-serif;
-  color: var(--main-color);
-  background: none;
-  transition: all var(--transition);
-  position: relative;
-  z-index: 2;
-}
-
-/* Dégradé uniquement sur desktop et navigateurs compatibles */
-@media (min-width: 700px) {
-  nav .logo {
-    color: var(--main-color) !important;
-    background: none !important;
-    /* Suppression du dégradé et du text transparent */
-  }
-}
-nav .logo::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-  transition: width var(--transition);
-}
-nav .logo:hover::after {
-  width: 100%;
-}
-nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-nav ul li {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-nav ul li a {
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding: 0 0.7rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.08rem;
-  color: var(--main-color);
-  letter-spacing: 0.3px;
-  position: relative;
-  background: none;
-  transition: color 0.18s, background 0.18s;
-  z-index: 1;
-  overflow: visible;
-}
-nav ul li a::after {
-  display: none !important;
-}
-nav ul li a:hover,
-nav ul li a.active {
-  color: var(--accent-color);
-  background: none;
-  box-shadow: none;
-}
-nav ul li a:hover::after,
-nav ul li a.active::after {
-  width: 100%;
-}
-.menu-toggle { display: none; }
+/* Styles supprimés pour éviter les conflits */
 
 /* --- SUIVI SOURIS GLOBAL --- SUPPRIMÉ */
 
@@ -1292,4 +1166,756 @@ nav .logo, nav .logo:focus, nav .logo:active, nav .logo:visited {
 .btn:focus, .cta:focus, .btn-devis:focus {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
+}
+
+/* CORRECTION DU TYPEWRITER TEXT */
+.typewriter-text {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+  hyphens: auto !important;
+  overflow: hidden !important;
+  text-align: center !important;
+  border-right: 2px solid #f59e0b;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Correction spécifique pour les petits écrans */
+@media (max-width: 768px) {
+  .typewriter-text {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    display: inline-block !important;
+    hyphens: auto !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+}
+
+/* RESPONSIVE IMPROVEMENTS */
+@media (max-width: 640px) {
+  .typewriter-text {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero h1 {
+    font-size: 1.5rem !important;
+    padding: 0 1rem;
+  }
+  
+  .hero p {
+    font-size: 1rem !important;
+    padding: 0 1rem;
+  }
+  
+  /* Amélioration du menu mobile */
+  #mobile-menu {
+    width: 100vw;
+    max-width: 320px;
+  }
+  
+  /* Amélioration des boutons CTA */
+  .hero .cta, .hero .btn-devis {
+    min-width: auto !important;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Amélioration de la navigation devis/contact */
+  #btn-devis, #btn-contact {
+    width: 100%;
+    margin: 0.25rem 0;
+  }
+  
+  /* Amélioration des points forts */
+  .hero-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .hero-stat {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .typewriter-text {
+    font-size: 1.25rem !important;
+  }
+  
+  .hero h1 {
+    font-size: 1.25rem !important;
+  }
+  
+  .hero p {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Réduction de la taille des boutons sur très petits écrans */
+  .hero .cta, .hero .btn-devis {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Amélioration de l'espacement */
+  .hero-buttons {
+    gap: 0.5rem;
+  }
+  
+  /* Amélioration des points forts */
+  .hero-stats {
+    gap: 0.25rem;
+  }
+  
+  .hero-stat {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* NAVIGATION PROPRE ET SIMPLE */
+header {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+}
+
+/* Menu hamburger */
+#mobile-menu-btn {
+  position: relative;
+}
+
+#mobile-menu {
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#mobile-menu-overlay {
+  backdrop-filter: blur(2px);
+}
+
+/* Correction des z-index pour éviter les conflits */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Empêcher le contenu de la section héro de s'afficher dans le menu mobile */
+#mobile-menu {
+  background: white !important;
+  backdrop-filter: blur(10px);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#mobile-menu * {
+  position: relative;
+  z-index: 1;
+  background: white !important;
+}
+
+#mobile-menu a {
+  background: white !important;
+  color: #374151 !important;
+  text-decoration: none !important;
+}
+
+#mobile-menu a:hover {
+  background: #f3f4f6 !important;
+  color: #f59e0b !important;
+}
+
+/* S'assurer que le contenu principal reste en arrière-plan */
+main section {
+  z-index: 1 !important;
+}
+
+/* Empêcher le zoom sur mobile */
+@media (max-width: 768px) {
+  html, body {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+/* S'assurer que le menu mobile est toujours au-dessus */
+#mobile-menu {
+  z-index: 9999 !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: none !important;
+}
+
+#mobile-menu.menu-open {
+  display: block !important;
+}
+
+#mobile-menu-overlay {
+  z-index: 9998 !important;
+}
+
+#mobile-menu-btn {
+  z-index: 9999 !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Debug: rendre le bouton hamburger plus visible */
+#mobile-menu-btn {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+}
+
+#mobile-menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Forcer l'opacité du menu mobile */
+#mobile-menu,
+#mobile-menu *,
+#mobile-menu div,
+#mobile-menu a,
+#mobile-menu button {
+  background-color: white !important;
+  color: #374151 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+}
+
+#mobile-menu {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-width: 100vw !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+#mobile-menu a:hover {
+  background-color: #f3f4f6 !important;
+  color: #f59e0b !important;
+  transform: scale(1.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Amélioration du menu plein écran */
+#mobile-menu {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  overflow: hidden !important;
+}
+
+#mobile-menu .group {
+  transition: all 0.3s ease !important;
+}
+
+#mobile-menu .group:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Animation d'entrée pour les éléments */
+#mobile-menu .group {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#mobile-menu .group:nth-child(1) { animation-delay: 0.1s; }
+#mobile-menu .group:nth-child(2) { animation-delay: 0.2s; }
+#mobile-menu .group:nth-child(3) { animation-delay: 0.3s; }
+#mobile-menu .group:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styles modernes pour la navigation desktop */
+nav ul li a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: transparent !important;
+}
+
+/* Style pour le bouton Devis dans la navigation desktop */
+nav ul li a[href*="devis"] {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+nav ul li a[href*="devis"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, #f97316, #ea580c) !important;
+  color: white !important;
+}
+
+nav ul li a[href*="devis"]::after {
+  display: none !important;
+}
+
+
+
+/* S'assurer que le menu ne déborde pas */
+#mobile-menu div {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+#mobile-menu a {
+  max-width: 100% !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Animation du menu hamburger */
+#mobile-menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+#mobile-menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+#mobile-menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Amélioration des liens du menu mobile */
+#mobile-menu a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#mobile-menu a:hover {
+  transform: translateX(8px);
+}
+
+#mobile-menu a::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+#mobile-menu a:hover::before {
+  width: 6px;
+}
+
+/* Amélioration de la navigation devis/contact */
+@media (max-width: 640px) {
+  .bg-white\/10.backdrop-blur-sm.rounded-full.p-1.border.border-white\/20 {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .bg-white\/10.backdrop-blur-sm.rounded-full.p-1.border.border-white\/20 button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Amélioration spécifique pour la navigation devis/contact */
+@media (max-width: 640px) {
+  .flex.justify-center.mb-8.px-4 .bg-white\/10.backdrop-blur-sm.rounded-full.p-1.border.border-white\/20 {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .flex.justify-center.mb-8.px-4 .bg-white\/10.backdrop-blur-sm.rounded-full.p-1.border.border-white\/20 button {
+    width: 100%;
+    text-align: center;
+    margin: 0.25rem 0;
+  }
+}
+
+/* Amélioration des avis en mode mobile */
+@media (max-width: 768px) {
+  .avis-section {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .avis-card {
+    min-height: 200px;
+  }
+  
+  /* Suppression des boutons de navigation mobile */
+  .mobile-nav-btn {
+    display: none !important;
+  }
+}
+
+/* Amélioration de la navigation responsive */
+@media (max-width: 1024px) {
+  nav .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav .max-w-7xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav .max-w-7xl {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  
+  #mobile-menu {
+    width: 100vw;
+    max-width: 280px;
+  }
+} 
+
+/* AMÉLIORATION DU DESIGN DES MODALES */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+}
+
+.modal {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.4rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.modal-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.modal h2 {
+  color: #1f2937;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.modal h2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  border-radius: 2px;
+}
+
+.modal-content h3 {
+  color: #374151;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #fef3c7, #fed7aa);
+  border-radius: 0.75rem;
+  border-left: 4px solid #f59e0b;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.modal-content li {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: white;
+  border-radius: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  color: #4b5563;
+  line-height: 1.7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f3f4f6;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border-radius: 0 2px 2px 0;
+}
+
+.modal-content li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-color: #f59e0b;
+}
+
+.modal-content li strong {
+  color: #1f2937;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.modal-content p {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
+  margin: 2rem auto 0 auto;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+/* Centrage du contenu des modales */
+.modal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Bouton de devis dans les modales - Style moderne et centré */
+.modal-content .btn-devis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  padding: 1.25rem 2.5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  margin: 2rem auto 0 auto;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+  position: relative;
+  overflow: hidden;
+  min-width: 280px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.modal-content .btn-devis::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.modal-content .btn-devis:hover::before {
+  left: 100%;
+}
+
+.modal-content .btn-devis:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5);
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+}
+
+.modal-content .btn-devis:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.modal-content .btn-devis svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.modal-content .btn-devis:hover svg {
+  transform: translateX(3px);
+}
+
+.modal-content p::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.modal-content p:hover::before {
+  left: 100%;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive pour les modales */
+@media (max-width: 768px) {
+  .modal {
+    padding: 2rem;
+    margin: 1rem;
+    max-height: 90vh;
+  }
+  
+  .modal h2 {
+    font-size: 1.75rem;
+  }
+  
+  .modal-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-content li {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* CENTRAGE DU MENU HAMBURGER */
+#mobile-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100vh !important;
+  padding: 2rem !important;
+  overflow-y: auto !important;
+}
+
+#mobile-menu .flex.flex-col.items-center.space-y-6 {
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 100% !important;
+  padding: 2rem 0 !important;
+}
+
+/* Ajustement pour éviter que le devis soit coupé */
+#mobile-menu a:nth-child(5) {
+  margin-bottom: 2rem !important;
 } 

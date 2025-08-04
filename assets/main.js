@@ -1,42 +1,134 @@
+// Typewriter Effect
+function typeWriter(element, text, speed = 100) {
+  let i = 0;
+  element.innerHTML = '';
+  
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  
+  type();
+}
+
 // Menu mobile Tailwind
 document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  
+  function openMobileMenu() {
+    console.log('Ouverture du menu mobile');
+    
+    // Afficher l'overlay et le menu
+    mobileMenuOverlay.classList.remove('hidden');
+    mobileMenuOverlay.style.display = 'block';
+    
+    // S'assurer que le menu est visible et opaque
+    mobileMenu.style.display = 'block';
+    mobileMenu.style.background = 'white';
+    mobileMenu.style.opacity = '1';
+    mobileMenu.style.visibility = 'visible';
+    mobileMenu.classList.add('menu-open');
+    
+    // Animer l'ouverture
+    setTimeout(() => {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+    }, 10);
+    
+    // Empêcher le zoom et le scroll sans remonter en haut
+    const scrollY = window.scrollY;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollY}px`;
+    
+    // Animate burger menu
+    const spans = mobileMenuBtn.querySelectorAll('span');
+    mobileMenuBtn.classList.add('open');
+    spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+    
+    console.log('Menu mobile ouvert');
+  }
+  
+  function closeMobileMenu() {
+    console.log('Fermeture du menu mobile');
+    
+    // Animer la fermeture
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenuOverlay.classList.add('hidden');
+    
+    // Cacher le menu après l'animation
+    setTimeout(() => {
+      mobileMenu.style.display = 'none';
+      mobileMenuOverlay.style.display = 'none';
+      mobileMenu.classList.remove('menu-open');
+    }, 300);
+    
+    // Restaurer le scroll et la position
+    const scrollY = document.body.style.top;
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    
+    // Reset burger menu
+    const spans = mobileMenuBtn.querySelectorAll('span');
+    mobileMenuBtn.classList.remove('open');
+    spans[0].style.transform = 'none';
+    spans[1].style.opacity = '1';
+    spans[2].style.transform = 'none';
+    
+    console.log('Menu mobile fermé');
+  }
   
   if (mobileMenuBtn && mobileMenu) {
+    console.log('Menu mobile initialisé');
+    
+    // Ouvrir le menu
     mobileMenuBtn.addEventListener('click', () => {
-      // Toggle menu visibility
-      mobileMenu.classList.toggle('translate-x-full');
-      mobileMenu.classList.toggle('translate-x-0');
-      
-      // Animate burger menu
-      const spans = mobileMenuBtn.querySelectorAll('span');
-      mobileMenuBtn.classList.toggle('open');
-      
-      if (mobileMenuBtn.classList.contains('open')) {
-        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-      } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-      }
+      console.log('Bouton hamburger cliqué');
+      openMobileMenu();
     });
+    
+    // Fermer avec le bouton X
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Fermer avec l'overlay
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
     
     // Fermer le menu au clic sur un lien
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('translate-x-full');
-        mobileMenu.classList.remove('translate-x-0');
-        mobileMenuBtn.classList.remove('open');
-        
-        const spans = mobileMenuBtn.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-      });
+      link.addEventListener('click', closeMobileMenu);
     });
+    
+    // Fermer avec la touche Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  // Typewriter Effect pour le slogan
+  const typewriterElement = document.getElementById('typewriter-text');
+  if (typewriterElement) {
+    setTimeout(() => {
+      typeWriter(typewriterElement, 'Votre confort, notre engagement', 50);
+    }, 200);
   }
 
   // Apparition au scroll
@@ -151,25 +243,84 @@ document.addEventListener('DOMContentLoaded', () => {
   window.switchMode = switchMode;
   window.scrollToSection = scrollToSection;
 
-  // Carrousel d'avis
+  // Fonction pour scroll smooth vers la section devis
+  function scrollToDevis() {
+    // Si on est sur la page d'accueil
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+      const devisSection = document.getElementById('devis');
+      if (devisSection) {
+        // S'assurer que le mode devis est activé
+        switchMode('devis');
+        
+        // Scroll smooth vers la section
+        devisSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Focus sur le premier champ du formulaire après le scroll
+        setTimeout(() => {
+          const firstInput = document.querySelector('#formulaire-devis input[type="text"]');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }, 1000);
+      }
+    } else {
+      // Si on est sur une autre page, rediriger vers la page d'accueil avec l'ancre
+      window.location.href = '../index.html#devis';
+    }
+  }
+
+  // Rendre la fonction globale
+  window.scrollToDevis = scrollToDevis;
+
+  // Gérer le scroll vers la section devis si on arrive avec l'ancre #devis
+  if (window.location.hash === '#devis') {
+    // Attendre que la page soit chargée
+    setTimeout(() => {
+      const devisSection = document.getElementById('devis');
+      if (devisSection) {
+        // S'assurer que le mode devis est activé
+        switchMode('devis');
+        
+        // Scroll smooth vers la section
+        devisSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Focus sur le premier champ du formulaire après le scroll
+        setTimeout(() => {
+          const firstInput = document.querySelector('#formulaire-devis input[type="text"]');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }, 1000);
+      }
+    }, 100);
+  }
+
+  // Carrousel d'avis interactif
   const avisCarousel = document.getElementById('avis-carousel');
   const avisIndicators = document.querySelectorAll('.avis-indicator');
+  const prevBtn = document.getElementById('prev-avis');
+  const nextBtn = document.getElementById('next-avis');
   let currentSlide = 0;
   let slideInterval;
+  let isAutoPlaying = true;
 
   function showSlide(index) {
     if (!avisCarousel) return;
     
-    const visibleSlides = getVisibleSlides();
     const totalSlides = 4;
-    const maxIndex = Math.max(0, totalSlides - visibleSlides);
     
     // S'assurer que l'index est dans les limites
-    if (index > maxIndex) index = 0;
-    if (index < 0) index = maxIndex;
+    if (index >= totalSlides) index = 0;
+    if (index < 0) index = totalSlides - 1;
     
-    // Calculer le déplacement en pourcentage
-    const slideWidth = 100 / visibleSlides;
+    // Calculer le déplacement en pourcentage (un avis à la fois)
+    const slideWidth = 100;
     avisCarousel.style.transform = `translateX(-${index * slideWidth}%)`;
     
     // Mettre à jour les indicateurs
@@ -177,35 +328,43 @@ document.addEventListener('DOMContentLoaded', () => {
       if (i === index) {
         indicator.classList.remove('bg-gray-300');
         indicator.classList.add('bg-accent');
+        indicator.setAttribute('aria-current', 'true');
       } else {
         indicator.classList.remove('bg-accent');
         indicator.classList.add('bg-gray-300');
+        indicator.removeAttribute('aria-current');
       }
     });
     
     currentSlide = index;
   }
 
-  function getVisibleSlides() {
-    if (window.innerWidth >= 1024) return 3; // lg
-    if (window.innerWidth >= 768) return 2;  // md
-    return 1; // sm
+  function nextSlide() {
+    showSlide(currentSlide + 1);
   }
 
-  function nextSlide() {
-    const visibleSlides = getVisibleSlides();
-    const maxIndex = Math.max(0, 4 - visibleSlides);
-    currentSlide = (currentSlide + 1) > maxIndex ? 0 : currentSlide + 1;
-    showSlide(currentSlide);
+  function prevSlide() {
+    showSlide(currentSlide - 1);
   }
 
   function startAutoSlide() {
-    slideInterval = setInterval(nextSlide, 4000); // Change toutes les 4 secondes
+    if (isAutoPlaying) {
+      slideInterval = setInterval(nextSlide, 5000); // Change toutes les 5 secondes
+    }
   }
 
   function stopAutoSlide() {
     if (slideInterval) {
       clearInterval(slideInterval);
+    }
+  }
+
+  function toggleAutoPlay() {
+    isAutoPlaying = !isAutoPlaying;
+    if (isAutoPlaying) {
+      startAutoSlide();
+    } else {
+      stopAutoSlide();
     }
   }
 
@@ -220,16 +379,79 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Pause au survol
-    avisCarousel.addEventListener('mouseenter', stopAutoSlide);
-    avisCarousel.addEventListener('mouseleave', startAutoSlide);
+    // Gérer les boutons de navigation
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+      });
+    }
+
+    // Gérer les boutons de navigation mobile - SUPPRIMÉ
+
+    // Pause au survol (seulement sur desktop)
+    if (window.innerWidth >= 768) {
+      avisCarousel.addEventListener('mouseenter', stopAutoSlide);
+      avisCarousel.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    // Navigation au clavier
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        stopAutoSlide();
+        prevSlide();
+        startAutoSlide();
+      } else if (e.key === 'ArrowRight') {
+        stopAutoSlide();
+        nextSlide();
+        startAutoSlide();
+      }
+    });
 
     // Redimensionnement de la fenêtre
     window.addEventListener('resize', () => {
       showSlide(currentSlide);
     });
 
-    // Démarrer l'auto-slide
-    startAutoSlide();
-  }
+      // Démarrer l'auto-slide
+  startAutoSlide();
+
+  // Ajouter des styles CSS pour améliorer l'accessibilité
+  const style = document.createElement('style');
+  style.textContent = `
+    .avis-indicator:focus {
+      outline: 2px solid #f59e0b;
+      outline-offset: 2px;
+    }
+    
+    .mobile-nav-btn:focus {
+      outline: 2px solid #f59e0b;
+      outline-offset: 2px;
+    }
+    
+    #prev-avis:focus,
+    #next-avis:focus {
+      outline: 2px solid #f59e0b;
+      outline-offset: 2px;
+    }
+    
+    .avis-slide {
+      scroll-snap-align: start;
+    }
+    
+    #avis-carousel {
+      scroll-snap-type: x mandatory;
+    }
+  `;
+  document.head.appendChild(style);
+}
 }); 
