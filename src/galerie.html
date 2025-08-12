@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>Galerie - Ulysse Chauffage Sanitaire | Réalisations Plombier Russange 57390</title>
+  <title>Galerie Photos – Nos réalisations | Ulysse Chauffage Sanitaire Russange</title>
+  <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
   <meta name="description"
-    content="✅ Découvrez notre galerie de réalisations : rénovation, plomberie, chauffage, électricité, carrelage. Ulysse Chauffage Sanitaire, votre artisan de confiance à Russange. Devis gratuit ☎️ 06 11 04 77 82">
+    content="Découvrez en images les réalisations d'Ulysse Chauffage Sanitaire : installations de chaudières, salles de bain rénovées, poses de climatisations, etc., dans la région de Russange (Moselle). Parcourez notre galerie photo pour constater la qualité de nos travaux et trouver l'inspiration pour vos projets.">
   <meta name="keywords"
-    content="galerie réalisations, rénovation Russange, plomberie, chauffage, électricité, carrelage, peinture, menuiserie, devis gratuit">
+    content="galerie, photos, réalisations, chauffagiste Russange, plomberie Moselle, installation climatisation Russange, exemples travaux Ulysse, réalisations chauffage Russange, galerie plombier Moselle, photos installations Ulysse Russange">
   <meta name="author" content="Ulysse Chauffage Sanitaire">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
@@ -25,9 +26,9 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ulysse-chauffage-sanitaire.fr/galerie">
-  <meta property="og:title" content="Galerie - Ulysse Chauffage Sanitaire | Réalisations Plombier Expert Russange 57390">
+  <meta property="og:title" content="Galerie | Nos réalisations – Ulysse Chauffage Sanitaire">
   <meta property="og:description"
-    content="Découvrez notre galerie de réalisations : rénovation, plomberie, chauffage, électricité, carrelage. Devis gratuit et intervention rapide.">
+    content="Quelques exemples de nos installations de chauffage, sanitaires et climatisations en Moselle.">
   <meta property="og:image" content="https://ulysse-chauffage-sanitaire.fr/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -38,9 +39,9 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://ulysse-chauffage-sanitaire.fr/galerie">
-  <meta name="twitter:title" content="Galerie - Ulysse Chauffage Sanitaire | Réalisations Plombier Expert Russange 57390">
+  <meta name="twitter:title" content="Galerie | Nos réalisations – Ulysse Chauffage Sanitaire">
   <meta name="twitter:description"
-    content="Découvrez notre galerie de réalisations : rénovation, plomberie, chauffage, électricité, carrelage. Devis gratuit et intervention rapide.">
+    content="Quelques exemples de nos installations de chauffage, sanitaires et climatisations en Moselle.">
   <meta name="twitter:image" content="https://ulysse-chauffage-sanitaire.fr/images/twitter-image.jpg">
   <meta name="twitter:image:alt" content="Galerie Ulysse Chauffage Sanitaire - Réalisations Plombier Russange">
 
@@ -82,9 +83,9 @@
             'poppins': ['Poppins', 'sans-serif'],
           },
           colors: {
-            'main': '#1a365d',
-            'accent': '#f59e0b',
-            'secondary': '#dc2626',
+            'main': '#1c3f8c',
+            'accent': '#eda407',
+            'secondary': '#cd2d20',
           }
         }
       }
@@ -95,6 +96,31 @@
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="preload" href="../assets/style.css" as="style">
   <script defer src="../assets/main.js"></script>
+  <style>
+    #prevImage, #nextImage {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #prevImage:hover, #nextImage:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Vignettes galerie: même hauteur, pas de coupe */
+    .grid img {
+      height: 16rem; /* h-64 */
+      object-fit: contain !important;
+      background: #f3f4f6; /* gray-100 */
+    }
+  </style>
 </head>
 
 <body>
@@ -119,13 +145,43 @@
         </a>
 
         <!-- Desktop Menu -->
-        <ul class="hidden md:flex items-center space-x-8">
-          <li><a href="prestations.html"
-              class="font-poppins font-normal text-sm text-gray-700 tracking-wide hover:text-accent transition-colors">Prestations</a></li>
-          <li><a href="galerie.html" class="font-poppins font-normal text-sm text-gray-700 tracking-wide hover:text-accent transition-colors">Galerie</a></li>
-          <li><a href="qui-sommes-nous.html" class="font-poppins font-normal text-sm text-gray-700 tracking-wide hover:text-accent transition-colors">Qui sommes-nous ?</a></li>
-          <li><a href="../index.html#devis" onclick="scrollToDevis(); return false;" class="font-poppins font-normal text-sm text-gray-700 tracking-wide cursor-pointer hover:text-accent transition-colors">Devis</a></li>
-        </ul>
+                  <ul class="hidden md:flex items-center space-x-8">
+            <li><a href="qui-sommes-nous.html" class="font-poppins font-normal text-sm text-gray-700 tracking-wide hover:text-accent transition-colors">Qui sommes-nous ?</a></li>
+            <li class="relative group">
+              <button class="font-poppins font-normal text-sm text-gray-700 tracking-wide flex items-center gap-1">
+                Prestations
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                <div class="py-2">
+                  <a href="prestation-chauffage.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors">
+                    <span class="font-medium">Chauffage</span>
+                    <p class="text-xs text-gray-500 mt-1">Chaudières, radiateurs</p>
+                  </a>
+                  <a href="prestation-sanitaire.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors">
+                    <span class="font-medium">Sanitaire</span>
+                    <p class="text-xs text-gray-500 mt-1">Salles de bain, plomberie</p>
+                  </a>
+                  <a href="prestation-entretien.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors">
+                    <span class="font-medium">Entretien</span>
+                    <p class="text-xs text-gray-500 mt-1">Maintenance préventive</p>
+                  </a>
+                  <a href="prestation-depannage.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors">
+                    <span class="font-medium">Dépannage</span>
+                    <p class="text-xs text-gray-500 mt-1">Interventions 7j/7</p>
+                  </a>
+                  <a href="prestation-climatisation.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent transition-colors">
+                    <span class="font-medium">Climatisation</span>
+                    <p class="text-xs text-gray-500 mt-1">Installation, maintenance</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li><a href="galerie.html" class="font-poppins font-normal text-sm text-accent tracking-wide border-b-2 border-accent pb-1">Galerie</a></li>
+            <li><a href="../index.html#devis" onclick="scrollToDevis(); return false;" class="font-poppins font-normal text-sm text-gray-700 tracking-wide cursor-pointer hover:text-accent transition-colors">Devis</a></li>
+          </ul>
 
         <!-- Mobile Menu Button -->
         <button class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 z-[9999] relative" id="mobile-menu-btn" aria-label="Menu mobile">
@@ -138,12 +194,12 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="fixed inset-0 bg-black bg-opacity-50 z-[9998] hidden" id="mobile-menu-overlay" style="display: none;"></div>
-    
+
     <!-- Mobile Menu -->
     <div
       class="fixed top-0 left-0 h-full w-full bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl transform translate-x-full transition-transform duration-300 z-[9999]"
       id="mobile-menu" style="display: none;">
-      
+
       <!-- Close button centered -->
       <div class="flex justify-center pt-8 pb-4">
         <button class="text-gray-500 hover:text-gray-700 p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300" id="mobile-menu-close">
@@ -152,7 +208,7 @@
           </svg>
         </button>
       </div>
-      
+
       <!-- Menu items - Single page layout -->
       <div class="flex flex-col items-center justify-center h-full px-6 py-8 space-y-8 bg-transparent">
         <!-- Navigation links - Design simplifié -->
@@ -165,8 +221,8 @@
             </div>
             <span class="text-sm font-medium text-gray-600 group-hover:text-accent transition-colors">Accueil</span>
           </a>
-          
-          <a href="prestations.html" class="flex flex-col items-center space-y-2 group">
+
+          <a href="#" class="flex flex-col items-center space-y-2 group pointer-events-none opacity-60">
             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
               <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -174,7 +230,7 @@
             </div>
             <span class="text-sm font-medium text-gray-600 group-hover:text-accent transition-colors">Prestations</span>
           </a>
-          
+
           <a href="galerie.html" class="flex flex-col items-center space-y-2 group">
             <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -183,7 +239,7 @@
             </div>
             <span class="text-sm font-medium text-accent">Galerie</span>
           </a>
-          
+
           <a href="qui-sommes-nous.html" class="flex flex-col items-center space-y-2 group">
             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
               <svg class="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,7 +248,7 @@
             </div>
             <span class="text-sm font-medium text-gray-600 group-hover:text-accent transition-colors">Qui sommes-nous ?</span>
           </a>
-          
+
           <a href="../index.html#devis" onclick="scrollToDevis(); return false;" class="flex flex-col items-center space-y-2 group">
             <div class="w-12 h-12 bg-gradient-to-r from-accent to-yellow-400 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
               <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,74 +275,220 @@
             </svg>
             <span class="font-poppins font-semibold text-sm text-main">Notre savoir-faire en images</span>
           </div>
-          <h1 class="font-poppins font-bold text-3xl md:text-4xl text-main mb-4">Nos réalisations en images</h1>
+          <h1 class="font-poppins font-bold text-3xl md:text-4xl text-main mb-4">Galerie de nos réalisations</h1>
           <div class="w-20 h-1 bg-gradient-to-r from-accent to-yellow-400 rounded-full mx-auto mb-6"></div>
+          <h2 class="font-poppins text-xl md:text-2xl text-gray-700 mb-4 font-semibold">
+            Découvrez quelques exemples de nos travaux en chauffage, sanitaire et climatisation réalisés en Moselle
+          </h2>
           <p class="font-poppins text-lg text-gray-600 max-w-3xl mx-auto">
-            Découvrez quelques-uns de nos chantiers de rénovation : peinture, plomberie, électricité, carrelage, menuiserie... Un aperçu de notre savoir-faire et de la satisfaction de nos clients.
+            Installations de chaudières à condensation, rénovations complètes de salles de bain, poses de climatisations... Parcourez notre portfolio et constatez la qualité de nos réalisations à Russange et alentours.
           </p>
         </div>
 
-        <!-- Grille de la galerie -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier1.jpg" alt="Rénovation peinture salon" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Rénovation peinture salon</h3>
-                <p class="text-sm text-gray-200">Travaux de peinture et décoration</p>
+        <!-- Grille de la galerie organisée par catégories -->
+        <div class="space-y-16">
+          
+          <!-- Section Chauffage -->
+          <section>
+            <h2 class="font-poppins font-bold text-2xl md:text-3xl text-main mb-8 text-center">
+              Chauffage - Installations et maintenance
+            </h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+              Découvrez nos installations de chaudières gaz/fioul à condensation, systèmes de chauffage haute performance et travaux de maintenance réalisés dans la région de Russange.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(0)">
+                <img src="../images/chaudiere_ (1).jpg" alt="Installation chaudière gaz à condensation Russange" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Installation chaudière à condensation - Russange 2024</p>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier2.jpg" alt="Salle de bain rénovée" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Salle de bain rénovée</h3>
-                <p class="text-sm text-gray-200">Plomberie et carrelage</p>
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(1)">
+                <img src="../images/chaudiere_ (2).jpg" alt="Maintenance chaudière fioul Moselle" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Entretien chaudière fioul - Audun-le-Tiche 2024</p>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier3.jpg" alt="Installation électrique moderne" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Installation électrique moderne</h3>
-                <p class="text-sm text-gray-200">Mise aux normes électrique</p>
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(2)">
+                <img src="../images/chaudieree_ (1).jpg" alt="Chaudière gaz moderne Thionville" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Chaudière gaz haute performance - Thionville 2023</p>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier4.jpg" alt="Pose de carrelage cuisine" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Pose de carrelage cuisine</h3>
-                <p class="text-sm text-gray-200">Carrelage et faïence</p>
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(3)">
+                <img src="../images/chaudieree_ (2).jpg" alt="Système chauffage économique Villerupt" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Système chauffage économique - Villerupt 2024</p>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier5.jpg" alt="Menuiserie sur-mesure" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Menuiserie sur-mesure</h3>
-                <p class="text-sm text-gray-200">Agencement et meubles</p>
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(4)">
+                <img src="../images/chaudiere_fer_1 (1).jpg" alt="Chaudière industrielle Yutz" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Installation chaudière robuste - Yutz 2023</p>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <img src="../images/chantier6.jpg" alt="Rénovation complète appartement" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-              <div class="p-4 text-white">
-                <h3 class="font-poppins font-semibold text-lg">Rénovation complète appartement</h3>
-                <p class="text-sm text-gray-200">Travaux complets</p>
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(5)">
+                <img src="../images/chaudiere_fer_1 (2).jpg" alt="Chaudière haute performance Fameck" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Chaudière haute performance - Fameck 2024</p>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- Section Salles de bain / Sanitaires -->
+          <section>
+            <h2 class="font-poppins font-bold text-2xl md:text-3xl text-main mb-8 text-center">
+              Salles de bain / Sanitaires
+            </h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+              Créations et rénovations complètes de salles de bain, installations sanitaires modernes et fonctionnelles réalisées par nos plombiers experts en Moselle.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group bg-gray-100" onclick="openLightbox(6)">
+                <img src="../images/lavabo_.jpg" alt="Installation lavabo moderne Russange" class="w-full h-64 object-contain transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Installation lavabo design - Russange 2024</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group bg-gray-100" onclick="openLightbox(7)">
+                <img src="../images/salle_de_bain.jpg" alt="Rénovation salle de bain complète Audun-le-Tiche" class="w-full h-64 object-contain transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Rénovation salle de bain complète - Audun-le-Tiche 2023</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(8)">
+                <img src="../images/salle_de_bain (1).jpg" alt="Salle de bain moderne Villerupt" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Salle de bain moderne - Villerupt 2024</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(9)">
+                <img src="../images/salle_de_bain (2).jpg" alt="Douche italienne Thionville" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Douche italienne sur-mesure - Thionville 2024</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(10)">
+                <img src="../images/salle_de_bain_ (1).jpg" alt="Salle de bain design Uckange" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Salle de bain design - Uckange 2023</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(11)">
+                <img src="../images/salle_de_bain_ (2).jpg" alt="Salle de bain contemporaine Hayange" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Salle de bain contemporaine - Hayange 2024</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(12)">
+                <img src="../images/salle_de_bain_ (3).jpg" alt="Salle de bain luxe Rédange" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Salle de bain haut de gamme - Rédange 2023</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(13)">
+                <img src="../images/wc_.jpg" alt="Installation WC Russange" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">Installation WC moderne - Russange 2024</p>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group" onclick="openLightbox(14)">
+                <img src="../images/wc_2.jpg" alt="WC suspendu moderne Moselle" class="w-full h-64 object-cover transition-transform group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <svg class="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm font-medium">WC suspendu design - Moselle 2024</p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
 
         <!-- CTA -->
@@ -304,13 +506,13 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gradient-to-br from-main via-gray-900 to-gray-800 text-white pt-12 pb-6 mt-16">
+    <!-- Footer -->
+  <footer class="bg-gradient-to-br from-main via-gray-900 to-gray-800 text-white pt-12 pb-6">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row md:justify-between md:items-stretch gap-10 md:gap-0">
         <!-- Logo & Description -->
         <div class="flex-1 flex flex-col items-center md:items-start mb-8 md:mb-0 md:pr-8 border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0">
-          <img src="../images/logo.svg" alt="Ulysse Chauffage Sanitaire" class="h-12 w-auto mb-4">
+          <img src="../images/logo.png" alt="Ulysse Chauffage Sanitaire" class="h-12 w-auto mb-4">
           <p class="text-white/80 text-sm leading-relaxed max-w-xs text-center md:text-left">
             Votre artisan de confiance à Russange pour tous vos travaux de plomberie, chauffage, électricité et rénovation.
           </p>
@@ -320,7 +522,7 @@
           <h3 class="font-semibold text-lg mb-4 text-accent tracking-wide uppercase">Navigation</h3>
           <ul class="space-y-2 text-sm text-center">
             <li><a href="../index.html" class="hover:text-accent transition-colors duration-200">Accueil</a></li>
-            <li><a href="prestations.html" class="hover:text-accent transition-colors duration-200">Prestations</a></li>
+                         <li><a href="src/prestations.html" class="hover:text-accent transition-colors duration-200">Prestations</a></li>
             <li><a href="galerie.html" class="hover:text-accent transition-colors duration-200">Galerie</a></li>
             <li><a href="qui-sommes-nous.html" class="hover:text-accent transition-colors duration-200">Qui sommes-nous ?</a></li>
             <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-200">Devis gratuit</a></li>
@@ -354,33 +556,191 @@
               <a href="mailto:ulysse.chauffage@gmail.com" class="hover:text-accent transition-colors duration-200">ulysse.chauffage@gmail.com</a>
             </div>
           </div>
-          <!-- Réseaux sociaux -->
-          <div class="flex justify-center md:justify-end gap-4 mt-6">
-            <a href="#" class="hover:text-accent transition-colors" aria-label="Facebook">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12"></path></svg>
-            </a>
-            <a href="#" class="hover:text-accent transition-colors" aria-label="Instagram">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.281-.342-2.393-1.323-3.374-.981-.981-2.093-1.264-3.374-1.323C15.668.013 15.259 0 12 0z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.406" cy="5.594" r="1.44"/></svg>
-            </a>
-          </div>
+        
         </div>
       </div>
       <div class="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-white/40">
         <p class="mb-2 md:mb-0">&copy; 2025 Ulysse Chauffage Sanitaire. Tous droits réservés.</p>
         <div class="flex gap-4">
-          <a href="#" class="hover:text-accent transition-colors">Mentions légales</a>
-          <a href="#" class="hover:text-accent transition-colors">Politique de confidentialité</a>
+          <a href="../src/mentions-legales.html" class="hover:text-accent transition-colors">Mentions légales</a>
+          <a href="../src/politique-confidentialite.html" class="hover:text-accent transition-colors">Politique de confidentialité</a>
         </div>
       </div>
+    
+      </div>
+    </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[10000] hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+    <!-- Bouton fermer -->
+    <button id="closeLightbox" class="absolute top-4 right-4 text-white text-4xl font-bold z-10" onclick="closeLightbox()">×</button>
+
+    <!-- Bouton précédent -->
+    <button id="prevImage" class="absolute left-4 text-white text-4xl font-bold z-10" onclick="event.stopPropagation(); prevImage()">‹</button>
+
+    <!-- Bouton suivant -->
+    <button id="nextImage" class="absolute right-4 text-white text-4xl font-bold z-10" onclick="event.stopPropagation(); nextImage()">›</button>
+
+    <!-- Image container -->
+          <div class="relative w-[80vw] h-[80vh] max-w-5xl mx-auto flex items-center justify-center" onclick="event.stopPropagation()">
+      <img id="lightboxImage" src="" alt="" class="w-full h-full object-contain">
     </div>
-  </footer>
+  </div>
+
   <script>
     // Fonction pour faire défiler vers la section devis
     function scrollToDevis() {
       // Rediriger vers la page d'accueil et faire défiler vers la section devis
       window.location.href = '../index.html#devis';
     }
+
+    // Données de la galerie
+    let currentIndex = 0;
+    const galleryData = [
+      "../images/chaudiere_ (1).jpg",
+      "../images/chaudiere_ (2).jpg",
+      "../images/chaudieree_ (1).jpg",
+      "../images/chaudieree_ (2).jpg",
+      "../images/chaudiere_fer_1 (1).jpg",
+      "../images/chaudiere_fer_1 (2).jpg",
+      "../images/lavabo_.jpg",
+      "../images/salle_de_bain.jpg",
+      "../images/salle_de_bain (1).jpg",
+      "../images/salle_de_bain (2).jpg",
+      "../images/salle_de_bain_ (1).jpg",
+      "../images/salle_de_bain_ (2).jpg",
+      "../images/salle_de_bain_ (3).jpg",
+      "../images/wc_.jpg",
+      "../images/wc_2.jpg"
+    ];
+
+    // Éléments du DOM
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    // Fonction pour ouvrir la lightbox
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImage.src = galleryData[currentIndex];
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Fonction pour fermer la lightbox
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fonction pour afficher l'image précédente
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+      lightboxImage.src = galleryData[currentIndex];
+    }
+
+    // Fonction pour afficher l'image suivante
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % galleryData.length;
+      lightboxImage.src = galleryData[currentIndex];
+    }
+
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      }
+    });
+  </script>
+
+  <!-- Données structurées JSON-LD pour la galerie -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Galerie Photos Ulysse Chauffage Sanitaire",
+    "description": "Portfolio de nos réalisations en chauffage, sanitaire et salles de bain dans la région de Russange en Moselle",
+    "url": "https://www.ulysse-chauffage-sanitaire.fr/src/galerie.html",
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": "https://www.ulysse-chauffage-sanitaire.fr/images/chaudiere_ (1).jpg",
+        "description": "Installation chaudière gaz à condensation à Russange",
+        "dateCreated": "2024-01-15",
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Russange",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Moselle",
+            "addressCountry": "FR"
+          }
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "url": "https://www.ulysse-chauffage-sanitaire.fr/images/salle_de_bain.jpg",
+        "description": "Rénovation complète salle de bain moderne",
+        "dateCreated": "2023-11-20",
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Audun-le-Tiche",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Moselle",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    ],
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://www.ulysse-chauffage-sanitaire.fr/#business",
+      "name": "Ulysse Chauffage Sanitaire",
+      "telephone": "+33 1 23 45 67 89",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Russange",
+        "postalCode": "57390",
+        "addressLocality": "Russange",
+        "addressRegion": "Moselle",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.5234",
+        "longitude": "6.0456"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Russange"
+        },
+        {
+          "@type": "City", 
+          "name": "Audun-le-Tiche"
+        },
+        {
+          "@type": "City",
+          "name": "Thionville"
+        },
+        {
+          "@type": "City",
+          "name": "Villerupt"
+        }
+      ],
+      "serviceType": [
+        "Installation chauffage",
+        "Rénovation salle de bain",
+        "Plomberie sanitaire",
+        "Climatisation"
+      ]
+    }
+  }
   </script>
 </body>
 
-</html> 
+</html>

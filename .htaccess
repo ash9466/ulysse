@@ -1,0 +1,15 @@
+# Redirect to HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Serve sitemap
+<Files "sitemap.xml">
+  Header set Content-Type application/xml
+</Files>
+
+# Basic security headers
+Header set X-Content-Type-Options nosniff
+Header set X-Frame-Options SAMEORIGIN
+Header set Referrer-Policy no-referrer-when-downgrade
+Header set X-XSS-Protection "1; mode=block"

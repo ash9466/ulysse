@@ -198,6 +198,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Soumission AJAX du formulaire de devis
+  const devisForm = document.getElementById('formulaire-devis');
+  if (devisForm) {
+    devisForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formMessage = document.getElementById('formMessage');
+      if (formMessage) {
+        formMessage.className = '';
+        formMessage.classList.add('text-sm', 'p-3', 'rounded-lg', 'bg-white/10', 'text-white');
+        formMessage.textContent = 'Envoi en cours...';
+        formMessage.classList.remove('hidden');
+      }
+
+      const formData = new FormData(devisForm);
+      try {
+        const response = await fetch(devisForm.getAttribute('action') || 'php/send_mail_v2.php', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json().catch(() => ({ status: 'error', message: "Réponse invalide du serveur" }));
+        if (data.status === 'success') {
+          if (formMessage) {
+            formMessage.className = '';
+            formMessage.classList.add('text-sm', 'p-3', 'rounded-lg', 'bg-green-600/70', 'text-white');
+            formMessage.textContent = data.message || 'Votre demande a bien été envoyée.';
+          }
+          devisForm.reset();
+          // Remettre l'affichage du budget
+          if (budgetDisplay) budgetDisplay.textContent = '1 000€';
+        } else {
+          if (formMessage) {
+            formMessage.className = '';
+            formMessage.classList.add('text-sm', 'p-3', 'rounded-lg', 'bg-red-600/70', 'text-white');
+            formMessage.textContent = data.message || "Une erreur est survenue lors de l'envoi.";
+          }
+        }
+      } catch (err) {
+        if (formMessage) {
+          formMessage.className = '';
+          formMessage.classList.add('text-sm', 'p-3', 'rounded-lg', 'bg-red-600/70', 'text-white');
+          formMessage.textContent = "Impossible de contacter le serveur. Veuillez réessayer plus tard.";
+        }
+      }
+    });
+  }
+
   // Navigation entre devis et contact dans la même section
   function switchMode(mode) {
     const modeDevis = document.getElementById('mode-devis');
