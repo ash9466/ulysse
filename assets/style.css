@@ -1802,6 +1802,18 @@ nav ul li a[href*="devis"]::after {
   border: 1px solid rgba(26,54,93,0.08);
 }
 
+.partners-track:hover {
+  animation-play-state: paused;
+}
+
+.partners-track img:hover {
+  filter: grayscale(0) contrast(1.1) brightness(1.05);
+  opacity: 1;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
 @keyframes partners-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

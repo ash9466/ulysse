@@ -3,13 +3,62 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
+# Favicon handling - ensure it's served from root
+RewriteRule ^favicon\.ico$ /favicon.ico [L]
+
+# Redirections SEO pour éviter les 404
+# Redirections des anciennes URL vers les nouvelles avec /src/
+RewriteRule ^qui-sommes-nous/?$ /src/qui-sommes-nous.html [R=301,L]
+RewriteRule ^prestations/?$ /src/prestations.html [R=301,L]
+RewriteRule ^galerie/?$ /src/galerie.html [R=301,L]
+RewriteRule ^chauffage/?$ /src/prestation-chauffage.html [R=301,L]
+RewriteRule ^sanitaire/?$ /src/prestation-sanitaire.html [R=301,L]
+RewriteRule ^climatisation/?$ /src/prestation-climatisation.html [R=301,L]
+RewriteRule ^entretien/?$ /src/prestation-entretien.html [R=301,L]
+RewriteRule ^depannage/?$ /src/prestation-depannage.html [R=301,L]
+RewriteRule ^mentions-legales/?$ /src/mentions-legales.html [R=301,L]
+RewriteRule ^politique-confidentialite/?$ /src/politique-confidentialite.html [R=301,L]
+
 # Serve sitemap
 <Files "sitemap.xml">
   Header set Content-Type application/xml
 </Files>
+
+# Security: Block access to sensitive files
+<Files ".env">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files ".env.*">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files "*.log">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files "composer.json">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files "composer.lock">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Block access to backup files
+<FilesMatch "\.(bak|backup|old|tmp)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
 
 # Basic security headers
 Header set X-Content-Type-Options nosniff
 Header set X-Frame-Options SAMEORIGIN
 Header set Referrer-Policy no-referrer-when-downgrade
 Header set X-XSS-Protection "1; mode=block"
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"

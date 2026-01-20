@@ -1,202 +1,201 @@
 <?php
-require_once __DIR__ . '/PHPMailer/src/Exception.php';
-require_once __DIR__ . '/PHPMailer/src/PHPMailer.php';
-require_once __DIR__ . '/PHPMailer/src/SMTP.php';
+// Activer l'affichage des erreurs pour debug (à retirer en production)
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
+// Headers pour CORS et JSON
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
-// Fonction pour charger les variables d'environnement
-function loadEnv($file) {
-    $env = [];
-    if (file_exists($file)) {
-        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        foreach ($lines as $line) {
-            if (strpos($line, '#') === 0) continue; // Ignorer les commentaires
-            if (strpos($line, '=') !== false) {
-                list($key, $value) = explode('=', $line, 2);
-                $env[trim($key)] = trim($value);
-            }
-        }
-    }
-    return $env;
+// Répondre aux préflight CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
 }
 
-// Charger la configuration depuis le fichier .env
-$env = loadEnv(__DIR__ . '/../.env');
+// Charger les variables d'environnement (essaie plusieurs chemins)
+$candidateEnvPaths = [
+    __DIR__ . '/../.env',
+    __DIR__ . '/.env'
+];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
-    $nom = $_POST['nom'] ?? '';
-    $prenom = $_POST['prenom'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $telephone = $_POST['telephone'] ?? '';
-    $prestation = $_POST['prestation'] ?? '';
-    $description = $_POST['description'] ?? '';
-    $budget = $_POST['budget'] ?? '';
-    
-    // Validation basique
-    if (empty($nom) || empty($email) || empty($telephone) || empty($prestation)) {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Veuillez remplir tous les champs obligatoires.'
-        ]);
-        exit;
+$env_file = null;
+foreach ($candidateEnvPaths as $path) {
+    if (file_exists($path)) {
+        $env_file = $path;
+        break;
     }
-    
-    // Validation de l'email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Adresse email invalide.'
-        ]);
-        exit;
-    }
-    
-    try {
-        // Configuration PHPMailer
-        $mail = new PHPMailer(true);
-        
-        // Configuration SMTP
-        $mail->isSMTP();
-        $mail->Host = $env['SMTP_HOST'] ?? 'smtp.ionos.fr';
-        $mail->SMTPAuth = true;
-        $mail->Username = $env['SMTP_USERNAME'] ?? '';
-        $mail->Password = $env['SMTP_PASSWORD'] ?? '';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = $env['SMTP_PORT'] ?? 465;
-        $mail->CharSet = 'UTF-8';
-        
-        // Expéditeur
-        $mail->setFrom($env['FROM_EMAIL'] ?? '', $env['FROM_NAME'] ?? 'Ulysse Chauffage Sanitaire');
-        
-        // Destinataires - gestion de plusieurs emails séparés par des virgules
-        $toEmails = $env['TO_EMAIL'] ?? '';
-        if (!empty($toEmails)) {
-            $emailList = explode(',', $toEmails);
-            foreach ($emailList as $emailAddress) {
-                $emailAddress = trim($emailAddress);
-                if (!empty($emailAddress) && filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
-                    $mail->addAddress($emailAddress);
-                }
-            }
-        }
-        
-        // Email de réponse
-        $mail->addReplyTo($email, $nom . ' ' . $prenom);
-        
-        // Contenu de l'email
-        $mail->isHTML(true);
-        $mail->Subject = 'Nouvelle demande de devis - ' . $prestation;
-        
-        $htmlBody = "
-        <html>
-        <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
-            <div style='max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
-                <h2 style='color: #1c3f8c; border-bottom: 2px solid #eda407; padding-bottom: 10px;'>
-                    Nouvelle demande de devis - Ulysse Chauffage Sanitaire
-                </h2>
-                
-                <div style='background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin: 20px 0;'>
-                    <h3 style='color: #1c3f8c; margin-top: 0;'>Informations client :</h3>
-                    <p><strong>Nom :</strong> $nom</p>
-                    <p><strong>Prénom :</strong> $prenom</p>
-                    <p><strong>Email :</strong> <a href='mailto:$email'>$email</a></p>
-                    <p><strong>Téléphone :</strong> <a href='tel:$telephone'>$telephone</a></p>
-                </div>
-                
-                <div style='background-color: #f0f8ff; padding: 15px; border-radius: 5px; margin: 20px 0;'>
-                    <h3 style='color: #1c3f8c; margin-top: 0;'>Détails de la demande :</h3>
-                    <p><strong>Type de prestation :</strong> <span style='color: #eda407; font-weight: bold;'>$prestation</span></p>
-                    <p><strong>Budget estimé :</strong> <span style='color: #eda407; font-weight: bold;'>$budget €</span></p>
-                    <p><strong>Description du projet :</strong></p>
-                    <div style='background-color: white; padding: 10px; border-left: 4px solid #eda407; margin-top: 10px;'>
-                        " . (!empty($description) ? nl2br(htmlspecialchars($description)) : '<em>Aucune description fournie</em>') . "
-                    </div>
-                </div>
-                
-                <div style='background-color: #e8f5e8; padding: 15px; border-radius: 5px; margin: 20px 0;'>
-                    <h3 style='color: #1c3f8c; margin-top: 0;'>Actions suggérées :</h3>
-                    <ul>
-                        <li>Contacter le client par téléphone : <strong>$telephone</strong></li>
-                        <li>Répondre par email : <strong>$email</strong></li>
-                        <li>Planifier une visite si nécessaire</li>
-                        <li>Préparer un devis détaillé</li>
-                    </ul>
-                </div>
-                
-                <div style='text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;'>
-                    <p style='font-size: 12px; color: #666;'>
-                        Email envoyé automatiquement depuis le site web Ulysse Chauffage Sanitaire<br>
-                        Date : " . date('d/m/Y à H:i:s') . "
-                    </p>
-                </div>
-            </div>
-        </body>
-        </html>";
-        
-        $mail->Body = $htmlBody;
-        
-        // Version texte alternative
-        $textBody = "Nouvelle demande de devis - Ulysse Chauffage Sanitaire\n\n";
-        $textBody .= "INFORMATIONS CLIENT :\n";
-        $textBody .= "Nom : $nom\n";
-        $textBody .= "Prénom : $prenom\n";
-        $textBody .= "Email : $email\n";
-        $textBody .= "Téléphone : $telephone\n\n";
-        $textBody .= "DÉTAILS DE LA DEMANDE :\n";
-        $textBody .= "Type de prestation : $prestation\n";
-        $textBody .= "Budget estimé : $budget €\n";
-        $textBody .= "Description du projet :\n" . (!empty($description) ? $description : 'Aucune description fournie') . "\n\n";
-        $textBody .= "Date : " . date('d/m/Y à H:i:s');
-        
-        $mail->AltBody = $textBody;
-        
-        // Envoi de l'email
-        $mail->send();
-        
-        // Log des données dans un fichier pour vérification
-        $logFile = __DIR__ . '/form_submissions.log';
-        $logEntry = date('Y-m-d H:i:s') . " - Email envoyé avec succès:\n";
-        $logEntry .= "Nom: $nom\n";
-        $logEntry .= "Prénom: $prenom\n";
-        $logEntry .= "Email: $email\n";
-        $logEntry .= "Téléphone: $telephone\n";
-        $logEntry .= "Prestation: $prestation\n";
-        $logEntry .= "Description: $description\n";
-        $logEntry .= "Budget: $budget\n";
-        $logEntry .= "Destinataires: " . ($env['TO_EMAIL'] ?? '') . "\n";
-        $logEntry .= "---\n\n";
-        
-        file_put_contents($logFile, $logEntry, FILE_APPEND);
-        
-        echo json_encode([
-            'success' => true,
-            'message' => 'Votre demande de devis a été envoyée avec succès ! Nous vous recontacterons rapidement.'
-        ]);
-        
-    } catch (Exception $e) {
-        // Log de l'erreur
-        $errorLog = __DIR__ . '/email_errors.log';
-        $errorEntry = date('Y-m-d H:i:s') . " - Erreur d'envoi d'email:\n";
-        $errorEntry .= "Erreur: " . $mail->ErrorInfo . "\n";
-        $errorEntry .= "Exception: " . $e->getMessage() . "\n";
-        $errorEntry .= "---\n\n";
-        
-        file_put_contents($errorLog, $errorEntry, FILE_APPEND);
-        
-        echo json_encode([
-            'success' => false,
-            'message' => 'Erreur lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter directement.'
-        ]);
-    }
-} else {
+}
+
+if ($env_file === null) {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Fichier de configuration .env introuvable. Chemins testés: ' . implode(', ', $candidateEnvPaths)]);
+    exit;
+}
+
+$env = parse_ini_file($env_file);
+if ($env === false) {
+    echo json_encode(['status' => 'error', 'message' => 'Erreur de lecture de la configuration.']);
+    exit;
+}
+
+// Mode debug GET: retourner info .env sans envoyer d'email
+if (isset($_GET['debug']) && $_GET['debug'] == '1' && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    $configSummary = [
+        'SMTP_HOST' => isset($env['SMTP_HOST']),
+        'SMTP_PORT' => isset($env['SMTP_PORT']) ? (int)$env['SMTP_PORT'] : null,
+        'SMTP_ENCRYPTION' => $env['SMTP_ENCRYPTION'] ?? null,
+        'FROM_EMAIL' => isset($env['FROM_EMAIL']),
+        'FROM_NAME' => isset($env['FROM_NAME']),
+        'TO_EMAIL' => isset($env['TO_EMAIL'])
+    ];
     echo json_encode([
-        'success' => false,
-        'message' => 'Méthode non autorisée.'
+        'status' => 'debug',
+        'env_path' => $env_file,
+        'config_keys_present' => $configSummary
     ]);
+    exit;
+}
+
+// Valider la présence des clés requises dans .env
+$requiredKeys = ['SMTP_HOST','SMTP_USERNAME','SMTP_PASSWORD','SMTP_ENCRYPTION','SMTP_PORT','FROM_EMAIL','FROM_NAME','TO_EMAIL'];
+$missingKeys = array_values(array_diff($requiredKeys, array_keys($env)));
+if (!empty($missingKeys)) {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Clés manquantes dans .env: ' . implode(', ', $missingKeys)]);
+    exit;
+}
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Chargement de PHPMailer
+require __DIR__ . '/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer/src/SMTP.php';
+require __DIR__ . '/PHPMailer/src/Exception.php';
+
+// Vérifier que la requête est de type POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['status' => 'error', 'message' => 'Méthode non autorisée.']);
+    exit;
+}
+
+// Récupérer les données du formulaire
+$nom = isset($_POST['nom']) ? trim($_POST['nom']) : '';
+$prenom = isset($_POST['prenom']) ? trim($_POST['prenom']) : '';
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$telephone = isset($_POST['telephone']) ? trim($_POST['telephone']) : '';
+$prestation = isset($_POST['prestation']) ? trim($_POST['prestation']) : '';
+$description = isset($_POST['description']) ? trim($_POST['description']) : '';
+$mentions = isset($_POST['mentions']) ? true : false;
+
+// Validation basique
+if (empty($nom) || empty($email) || empty($telephone) || empty($prestation) || !$mentions) {
+    http_response_code(400);
+    echo json_encode(['status' => 'error', 'message' => 'Tous les champs obligatoires ne sont pas remplis.']);
+    exit;
+}
+
+// Configuration de PHPMailer
+$mail = new PHPMailer(true);
+
+try {
+    // Paramètres SMTP
+    $mail->isSMTP();
+    $mail->Host       = $env['SMTP_HOST'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $env['SMTP_USERNAME'];
+    $mail->Password   = $env['SMTP_PASSWORD'];
+    // Normaliser l'option d'encryptage
+    $encryption = strtolower(trim((string)$env['SMTP_ENCRYPTION']));
+    if ($encryption === 'tls' || $encryption === 'starttls') {
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    } elseif ($encryption === 'ssl' || $encryption === 'smtps') {
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    } else {
+        $mail->SMTPSecure = '';
+    }
+    $mail->Port       = (int)$env['SMTP_PORT'];
+    
+    // Debug SMTP (à retirer en production)
+    $mail->SMTPAutoTLS = true;
+    $mail->SMTPDebug = (isset($_GET['debug']) && $_GET['debug'] == '1') ? 2 : 0;  // 0 = off, 1 = client, 2 = client and server
+    
+    // Encodage
+    $mail->CharSet = 'UTF-8';
+    // Langue (fichiers présents dans PHPMailer/language)
+    $mail->setLanguage('fr', __DIR__ . '/PHPMailer/language/');
+
+    // Expéditeur et destinataire
+    // Beaucoup de serveurs exigent que l'expéditeur corresponde au compte authentifié
+    $fromEmailConfigured = $env['FROM_EMAIL'];
+    $smtpUsernameEmail = $env['SMTP_USERNAME'];
+    $mail->setFrom($smtpUsernameEmail, $env['FROM_NAME']);
+    $mail->addAddress($env['TO_EMAIL']);
+    
+    // Email de réponse (celui du client)
+    $mail->addReplyTo($email, $nom . ' ' . $prenom);
+
+    // Contenu de l'email
+    $mail->isHTML(true);
+    $mail->Subject = 'Nouvelle demande de devis - Ulysse Chauffage Sanitaire';
+    $mail->Body    = "
+        <h1>Nouvelle demande de devis</h1>
+        <p><strong>Nom :</strong> $nom</p>
+        <p><strong>Prénom :</strong> $prenom</p>
+        <p><strong>Email :</strong> $email</p>
+        <p><strong>Téléphone :</strong> $telephone</p>
+        <p><strong>Type de prestation :</strong> $prestation</p>
+        <p><strong>Description :</strong><br>" . nl2br(htmlspecialchars($description)) . "</p>
+    ";
+    $mail->AltBody = "
+        Nouvelle demande de devis
+        Nom : $nom
+        Prénom : $prenom
+        Email : $email
+        Téléphone : $telephone
+        Type de prestation : $prestation
+        Description : $description
+    ";
+
+    // Envoi de l'email
+    $mail->send();
+    $debugData = [];
+    if (isset($_GET['debug']) && $_GET['debug'] == '1') {
+        $debugData = [
+            'env_path' => $env_file,
+            'config' => [
+                'SMTP_HOST' => $env['SMTP_HOST'] ?? null,
+                'SMTP_PORT' => (int)($env['SMTP_PORT'] ?? 0),
+                'SMTP_ENCRYPTION' => $env['SMTP_ENCRYPTION'] ?? null,
+                'FROM_EMAIL' => $fromEmailConfigured ?? null,
+                'FROM_NAME' => $env['FROM_NAME'] ?? null,
+                'TO_EMAIL' => $env['TO_EMAIL'] ?? null
+            ],
+            'from_equals_smtp_username' => strtolower($fromEmailConfigured) === strtolower($smtpUsernameEmail)
+        ];
+    }
+    echo json_encode(['status' => 'success', 'message' => 'Votre demande a été envoyée avec succès !'] + $debugData);
+} catch (Exception $e) {
+    http_response_code(500);
+    $debugData = [];
+    if (isset($_GET['debug']) && $_GET['debug'] == '1') {
+        $debugData = [
+            'env_path' => $env_file,
+            'config' => [
+                'SMTP_HOST' => $env['SMTP_HOST'] ?? null,
+                'SMTP_PORT' => (int)($env['SMTP_PORT'] ?? 0),
+                'SMTP_ENCRYPTION' => $env['SMTP_ENCRYPTION'] ?? null,
+                'FROM_EMAIL' => $fromEmailConfigured ?? null,
+                'FROM_NAME' => $env['FROM_NAME'] ?? null,
+                'TO_EMAIL' => $env['TO_EMAIL'] ?? null
+            ],
+            'from_equals_smtp_username' => strtolower($fromEmailConfigured) === strtolower($smtpUsernameEmail)
+        ];
+    }
+    echo json_encode(['status' => 'error', 'message' => "L'envoi a échoué. Erreur : " . $mail->ErrorInfo] + $debugData);
 }
 ?>

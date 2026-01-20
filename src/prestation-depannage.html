@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dépannage - Ulysse Chauffage Sanitaire | Urgences 7j/7</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Dépannage urgence 7j/7 à Russange : chauffage, plomberie, climatisation. Intervention rapide par Ulysse Chauffage Sanitaire.">
+  <meta name="keywords" content="dépannage urgence Russange, dépannage chauffage, fuite eau, panne chaudière, dépannage 7j/7, 57390 Moselle">
+  <meta name="author" content="Ulysse Chauffage Sanitaire">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ulysse-chauffage-sanitaire.fr/src/prestation-depannage.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ulysse-chauffage-sanitaire.fr/src/prestation-depannage.html">
+  <meta property="og:title" content="Dépannage Urgence 7j/7 | Ulysse Chauffage Sanitaire Russange">
+  <meta property="og:description" content="Service de dépannage urgence disponible 7j/7 : chauffage, plomberie, climatisation. Intervention rapide.">
+  <meta property="og:image" content="https://ulysse-chauffage-sanitaire.fr/images/favicon.svg">
+  
   <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +65,60 @@
         </button>
       </div>
     </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-[9998] hidden" id="mobile-menu-overlay" style="display: none;"></div>
+    
+    <!-- Mobile Menu -->
+    <div
+      class="fixed top-0 left-0 h-full w-full bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl transform translate-x-full transition-transform duration-300 z-[9999]"
+      id="mobile-menu" style="display: none;">
+      
+      <!-- Close button centered -->
+      <div class="flex justify-center pt-8 pb-4">
+        <button class="text-gray-500 hover:text-gray-700 p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300" id="mobile-menu-close">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Menu items - Single page layout -->
+      <div class="flex flex-col items-center justify-center h-full px-6 py-8 space-y-8 bg-transparent">
+        <!-- Navigation links - Design simplifié -->
+        <div class="flex flex-col items-center space-y-6 w-full max-w-xs">
+          <a href="../index.html" class="text-center py-3">
+            <span class="text-lg font-medium text-gray-600 hover:text-accent transition-colors">Accueil</span>
+          </a>
+          
+          <a href="qui-sommes-nous.html" class="text-center py-3">
+            <span class="text-lg font-medium text-gray-600 hover:text-accent transition-colors">Qui sommes-nous ?</span>
+          </a>
+          
+          <!-- Menu Prestations avec dropdown -->
+          <div class="flex flex-col items-center space-y-3">
+            <div class="text-lg font-medium text-gray-600 pointer-events-none">Prestations</div>
+            
+            <!-- Sous-menu des prestations -->
+            <div class="flex flex-col space-y-2 w-full max-w-xs">
+              <a href="prestation-chauffage.html" class="text-sm text-gray-500 hover:text-accent transition-colors text-center py-2">Chauffage</a>
+              <a href="prestation-sanitaire.html" class="text-sm text-gray-500 hover:text-accent transition-colors text-center py-2">Sanitaire</a>
+              <a href="prestation-entretien.html" class="text-sm text-gray-500 hover:text-accent transition-colors text-center py-2">Entretien</a>
+              <a href="prestation-depannage.html" class="text-sm text-accent hover:text-accent transition-colors text-center py-2">Dépannage</a>
+              <a href="prestation-climatisation.html" class="text-sm text-gray-500 hover:text-accent transition-colors text-center py-2">Climatisation</a>
+            </div>
+          </div>
+          
+          <a href="galerie.html" class="text-center py-3 hover:text-accent transition-colors">
+            <span class="text-lg font-medium text-gray-600">Galerie</span>
+          </a>
+          
+          <a href="../index.html#devis" onclick="scrollToDevis(); closeMobileMenu(); return false;" class="text-center py-3 hover:text-accent transition-colors">
+            <span class="text-lg font-medium text-accent">Devis</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -99,7 +170,7 @@
                          <li><a href="prestations.html" class="hover:text-accent transition-colors duration-200">Prestations</a></li>
             <li><a href="galerie.html" class="hover:text-accent transition-colors duration-200">Galerie</a></li>
             <li><a href="qui-sommes-nous.html" class="hover:text-accent transition-colors duration-200">Qui sommes-nous ?</a></li>
-            <li><a href="../index.html#contact" class="hover:text-accent transition-colors duration-200">Devis gratuit</a></li>
+            <li><a href="../index.html#devis" class="hover:text-accent transition-colors duration-200">Devis gratuit</a></li>
           </ul>
         </div>
         <!-- Contact & Réseaux sociaux -->
@@ -127,7 +198,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <a href="mailto:ulysse.chauffage@gmail.com" class="hover:text-accent transition-colors duration-200">ulysse.chauffage@gmail.com</a>
+              <a href="mailto:contact@ulysse.onmicrosoft.com" class="hover:text-accent transition-colors duration-200">contact@ulysse.onmicrosoft.com</a>
             </div>
           </div>
         
